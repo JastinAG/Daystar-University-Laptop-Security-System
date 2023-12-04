@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register New Laptop</title>
+    <link rel="stylesheet" href="dashboard.css">
+
+</head>
+<body>
+    <h1>Register New Laptop</h1>
+    <form action="register.php" method="post">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="Email">Email:</label><br>
+        <input type="email" id="Email" name="Email"  required><br>
+
+        <label for="laptopBrand">Laptop Brand:</label><br>
+        <input type="text" id="laptopBrand" name="laptopBrand" required><br>
+
+        <label for="serialNumber">Serial Number:</label><br>
+        <input type="text" id="serialNumber" name="serialNumber" required><br>
+
+        <label for="color-dropdown">Colour:</label>
+        <select id="color-dropdown" name="color-dropdown"  required>
+            <option value="white">White</option>
+            <option value="blue">Blue</option>
+            <option value="grey">Grey</option>
+            <option value="black">Black</option>
+        </select>
+        <button onclick="generateQRCode()">Generate QR Code</button>
+            <div id="qrcode"></div>
+            <script>
+                function generateQRCode() {
+                    var name = document.getElementById('name').value;
+                    var email = document.getElementById('Email').value;
+                    var laptopBrand = document.getElementById('laptopBrand').value;
+                    var serialNumber = document.getElementById('serialNumber').value;
+                    var color = document.getElementById('color-dropdown').value;
+
+                    var qrData = 'Name: ' + name + '\n' +
+                                 'Email: ' + email + '\n' +
+                                 'laptopBrand: ' +laptopBrand + '\n' +
+                                 'Serial Number: ' + serialNumber +'\n' +
+                                 'Colour: ' + color-drop;
+
+
+                    var qrcode = new QRCode('qrcode', {
+                        text: qrData,
+                        width: 128,
+                        height: 128,
+                        colorDark: '#000000',
+                        colorLight: '#ffffff',
+                        correctLevel: QRCode.CorrectLevel.H
+                    });
+                }
+            </script>
+
+    </form>
+    <script>
+        document.getElementById('submitBtn').addEventListener('click', function(event) {
+            event.preventDefault();
+
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
